@@ -471,7 +471,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const criticalAssets = ['/profile.png', '/icons/Abstract Shape.png'];
+    const criticalAssets = ['/profile.png', '/icons/AbstractShape.png'];
     criticalAssets.forEach(src => {
       const img = new Image();
       img.src = src;
@@ -479,7 +479,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const preloadAssets = ['/profile.png', '/icons/Abstract Shape.png'];
+    const preloadAssets = ['/profile.png', '/icons/AbstractShape.png'];
     preloadAssets.forEach(src => {
       const link = document.createElement('link');
       link.rel = 'preload';
@@ -696,7 +696,7 @@ function App() {
             </ScrollFloat>
             <img
               ref={skillsDividerRef}
-              src="/icons/Abstract Shape.png"
+              src="/icons/AbstractShape.png"
               alt="decorative shape"
               className="pointer-events-none w-[5.2rem] h-[5.2rem] md:w-[15rem] md:h-[15rem] lg:w-[17rem] lg:h-[17rem] -translate-x-2 md:-translate-x-6 lg:-translate-x-8 object-contain shrink-0"
             />
