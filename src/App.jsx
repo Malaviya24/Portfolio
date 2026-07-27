@@ -33,7 +33,6 @@ import {
   Hexagon,
   CodeBlock,
   Cloud,
-  HardDrives,
   Folder,
   Key,
   ShieldCheck,
@@ -50,15 +49,14 @@ gsap.registerPlugin(ScrollTrigger);
 const menuItems = [
   { label: 'Skills', ariaLabel: 'View skills section', link: '#skills' },
   { label: 'Projects', ariaLabel: 'View projects section', link: '#projects' },
-  { label: 'Events', ariaLabel: 'View Events section', link: '#events' },
   { label: 'Reviews', ariaLabel: 'View Reviews section', link: '#reviews' },
   { label: 'Contact', ariaLabel: 'Contact section', link: '#contact' }
 ];
 
 const socialItems = [
-  { label: 'LeetCode', link: 'https://leetcode.com/u/rakeshAdak/' },
-  { label: 'GitHub', link: 'https://github.com/0xRakkesh' },
-  { label: 'LinkedIn', link: 'https://www.linkedin.com/in/rakeshadak08/' }
+  { label: 'LeetCode', link: 'https://leetcode.com/u/Dhruv-Malaviya/' },
+  { label: 'GitHub', link: 'https://github.com/Malaviya24' },
+  { label: 'LinkedIn', link: 'https://www.linkedin.com/in/dhruv-malaviya' }
 ];
 
 const socialIconMap = {
@@ -82,8 +80,6 @@ const newSkillsData = [
     category: "DATABASE",
     items: [
       { name: "MongoDB", icon: Folder, color: "#47A248" },
-      { name: "Redis", icon: HardDrives, color: "#DC382D" },
-      { name: "PostgreSQL", icon: Database, color: "#336791" },
       { name: "Mongoose", icon: CodeBlock, color: "#b91c1c" }
     ]
   },
@@ -102,7 +98,7 @@ const newSkillsData = [
       { name: "Git", icon: GitBranch, color: "#F05032" },
       { name: "GitHub", icon: GithubLogo, color: "#ffffff" },
       { name: "GSAP", icon: Sparkle, color: "#88CE02" },
-      { name: "Linux", icon: HardDrives, color: "#eab308" }
+      { name: "Java", icon: Code, color: "#f89820" }
     ]
   }
 ];
@@ -154,37 +150,7 @@ const projectItems = [
   }
 ];
 
-const MilestonesFlowItems = [
-  {
-    link: '#',
-    text: 'EIBS 2.0',
-    marqueeText: '|EIBS 2.0|✦|FINALIST|✦|IIT KHARAGPUR|✦|',
-    images: [
-      '/photos/eibs.jpeg',
-      '/photos/iitkgp.jpg'
-    ]
-  },
-  {
-    link: '#',
-    text: 'VIBEATHON',
-    marqueeText: "|VIBEATHON|✦|2ND RUNNER UP|✦|DAKSHH'26|✦|",
-    images: [
-      '/photos/Vibe-A-thon.png',
-      '/photos/hitk.jpg'
-    ]
-  },
-  {
-    link: '#',
-    text: 'EDUCHAIN S3',
-    marqueeText: '|EDUCHAIN S3|✦|GLOBAL FINALIST|✦|TOP 120 TEAMS|✦|',
-    images: [
-      '/photos/educhain.jpeg',
-      '/photos/techno.jpg'
-    ]
-  }
-];
-
-const contactEmail = 'rakesh904664@gmail.com';
+const contactEmail = 'malaviyadhruv02@gmail.com';
 const RESUME_VIEWS_ENDPOINT = '/api/resume-views';
 
 function App() {
@@ -197,10 +163,8 @@ function App() {
   const skillsSectionRef = useRef(null);
   const skillsMenuRef = useRef(null);
   const skillsDividerRef = useRef(null);
-  const winsSectionRef = useRef(null);
   const projectsGridSectionRef = useRef(null);
   const [resumeViews, setResumeViews] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [formStatus, setFormStatus] = useState({ state: 'idle', message: '' });
 
@@ -373,33 +337,6 @@ function App() {
     }
   };
 
-  useGSAP(() => {
-    const eventItems = gsap.utils.toArray('.event-item');
-    if (!eventItems.length) return;
-
-    // "Skills like animation" uses scroll-scrubbing
-    gsap.set(eventItems, { autoAlpha: 0, y: 50 });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: eventItems[0].parentElement,
-        start: 'top 95%',
-        end: 'bottom 85%',
-        scrub: 1
-      }
-    });
-
-    tl.to(eventItems, {
-      autoAlpha: 1,
-      y: 0,
-      duration: 1,
-      stagger: 0.15,
-      ease: 'power2.out'
-    });
-
-    ScrollTrigger.refresh();
-  }, { scope: appRef, dependencies: [isMobile] });
-
   const handleScrollToTop = () => {
     const lenis = typeof window !== 'undefined' ? window.__lenis : null;
 
@@ -490,14 +427,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
-    const updateMobileState = () => setIsMobile(mediaQuery.matches);
-    updateMobileState();
-    mediaQuery.addEventListener('change', updateMobileState);
-    return () => mediaQuery.removeEventListener('change', updateMobileState);
-  }, []);
-
-  useEffect(() => {
     if (typeof document === 'undefined') {
       return undefined;
     }
@@ -522,15 +451,6 @@ function App() {
   }, [isLoading]);
 
   const formattedResumeViews = resumeViews.toLocaleString();
-  const milestonesItemsForView = isMobile
-    ? MilestonesFlowItems.map(item => {
-        if (item.text.toLowerCase().includes('eibs')) return { ...item, text: 'EIBS 2.0' };
-        if (item.text.toLowerCase().includes('vibeathon')) return { ...item, text: 'VIBEATHON' };
-        if (item.text.toLowerCase().includes('educhain')) return { ...item, text: 'EDUCHAIN S3' };
-        if (item.text.toLowerCase().includes('hack')) return { ...item, text: 'HACKHERITAGE' };
-        return item;
-      })
-    : MilestonesFlowItems;
 
   return (
     <>
@@ -586,7 +506,7 @@ function App() {
           >
             <h1 className="mt-20 sm:mt-24 md:mt-48 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.95] text-center lg:text-left max-w-5xl mx-auto lg:mx-0 text-black pb-2">
               <SplitText
-                text="RAKESH ADAK"
+                text="DHRUV MALAVIYA"
                 className=""
                 delay={20}
                 duration={1.0}
@@ -671,7 +591,7 @@ function App() {
               <div className="relative w-full max-w-[420px] aspect-square overflow-hidden rounded-[36px] border-[6px] border-white p-[8px] shadow-[0_0_0_2px_rgba(0,0,0,0.2),0_26px_56px_rgba(0,0,0,0.22)]">
                 <img
                   src="/profile.png"
-                  alt="Rakesh profile"
+                  alt="Dhruv profile"
                   className="block w-full h-full rounded-[30px] object-cover object-center"
                 />
               </div>
@@ -728,46 +648,6 @@ function App() {
         <ProjectAccordion items={projectItems} />
       </section>
 
-      <section ref={winsSectionRef} id="events" className="relative z-30 min-h-[40svh] md:min-h-[100svh] bg-[#120F17] text-white flex items-center">
-        <div className="w-full flex items-center justify-start px-6 md:px-10">
-          <div className="flex w-full items-center justify-between">
-            <ScrollFloat
-              animationDuration={1}
-              ease="back.inOut(2)"
-              scrollStart="top bottom"
-              scrollEnd="bottom 50%"
-              stagger={0.03}
-              containerClassName="m-0"
-              textClassName="text-left text-white uppercase font-extrabold tracking-tight text-[clamp(2.6rem,14vw,6.2rem)] md:text-[clamp(4rem,16vw,14rem)] leading-none whitespace-nowrap"
-            >
-              Events
-            </ScrollFloat>
-            
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-30 min-h-[40svh] bg-[#120F17] text-white pb-24 md:pb-32 w-full">
-        <div className="flex flex-col px-6 md:px-10 w-full">
-          {milestonesItemsForView.map((item, idx) => (
-            <div key={idx} className={`event-item pt-12 pb-4 md:pt-16 md:pb-8 flex items-center justify-between gap-3 md:gap-6 ${idx !== 0 ? 'border-t border-white/10' : ''}`}>
-              <h3 className="text-[clamp(2.5rem,10vw,4rem)] md:text-[5rem] font-extrabold uppercase tracking-tight text-gray-300 pointer-events-auto select-none leading-none break-words min-w-0 translate-y-[0.1em]">
-                {item.text}
-              </h3>
-              {item.images && item.images.length > 0 && (
-                <div className="hidden md:flex items-center gap-6 shrink-0">
-                  {item.images.map((imgSrc, imgIdx) => (
-                    <div key={imgIdx} className={`w-14 h-14 sm:w-16 sm:h-16 md:w-32 md:h-32 shrink-0 overflow-hidden rounded-full flex items-center justify-center ${imgIdx !== 0 ? 'bg-white' : ''}`}>
-                      <img src={imgSrc} alt={`${item.text} icon ${imgIdx + 1}`} className={`w-full h-full ${imgIdx === 0 ? 'object-contain' : 'object-cover'}`} />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section id="reviews" className="relative z-40 min-h-[30svh] md:min-h-[85svh] bg-white text-black flex items-center">
         <div className="w-full flex items-center justify-start px-6 md:px-10 py-0">
           <ScrollFloat
@@ -813,7 +693,7 @@ function App() {
                       <GlobeHemisphereWest size={24} weight="regular" className="text-white" />
                     </div>
                     <div>
-                      <p className="text-white text-base">West Bengal, India</p>
+                      <p className="text-white text-base">Surat, Gujarat</p>
                     </div>
                   </div>
                   

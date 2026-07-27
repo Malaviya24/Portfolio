@@ -14,9 +14,6 @@ const LoadingScreen = ({ onComplete }) => {
       '/videos/invo.mp4',
       '/photos/web3deploy.png',
       '/photos/Neo.png',
-      '/photos/eibs.jpeg',
-      '/photos/Vibe-A-thon.png',
-      '/photos/educhain.jpeg',
       '/photos/rakesh2.png',
     ];
 
