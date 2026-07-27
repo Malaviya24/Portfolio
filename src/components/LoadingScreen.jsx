@@ -10,10 +10,10 @@ const LoadingScreen = ({ onComplete }) => {
   useEffect(() => {
     // Assets to preload
     const assets = [
-      '/videos/nanobonds.mp4',
-      '/videos/invo.mp4',
-      '/photos/web3deploy.png',
-      '/photos/Neo.png',
+      '/photos/Ai-Stock.png',
+      '/photos/Bulksender.png',
+      '/photos/Zero-Trace.png',
+      '/photos/Tracura.png',
       '/photos/rakesh2.png',
     ];
 

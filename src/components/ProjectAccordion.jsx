@@ -56,11 +56,23 @@ export default function ProjectAccordion({ items }) {
                       </p>
 
                       <div className="flex flex-wrap gap-4">
+                        {item.projectLink && (
+                          <a
+                            href={item.projectLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={(event) => event.stopPropagation()}
+                            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#120F17] text-white rounded-full text-sm font-semibold tracking-wide hover:bg-[#120F17]/80 transition-colors cursor-pointer pointer-events-auto"
+                          >
+                            LIVE PROJECT
+                          </a>
+                        )}
                         {item.link && (
                           <a
                             href={item.link}
                             target="_blank"
                             rel="noreferrer"
+                            onClick={(event) => event.stopPropagation()}
                             className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#120F17] text-white rounded-full text-sm font-semibold tracking-wide hover:bg-[#120F17]/80 transition-colors cursor-pointer pointer-events-auto"
                           >
                             GITHUB

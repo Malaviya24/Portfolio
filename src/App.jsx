@@ -105,48 +105,51 @@ const newSkillsData = [
 
 const projectItems = [
   {
-    label: 'Web3 • Android',
-    title: 'nanobonds',
+    label: 'Finance AI',
+    title: 'AI-STOCK',
     description:
-      'A comprehensive 3-contract Solidity system featuring a bond pool, ERC-20 share tokens, and dynamic yield logic, entirely backed by IPFS-hosted metadata for decentralized storage. The native Android client seamlessly streams real-time APY, bond maturity schedules, and cashflow data directly from the on-chain state, providing users with a robust and transparent DeFi tracking experience.',
-    stack: ['Web3', 'Solidity', 'Android', 'IPFS'],
-    link: 'https://github.com/BikramMondal5/Nano-Bond/tree/main/Android',
+      'A smart stock recommendation platform for Indian equities that helps users discover potential buy opportunities using 20+ proven trading and investment strategies. It scans live market data, ranks buy signals, tracks portfolios, shows targets, risk levels, strategy details, and capital allocation insights so beginners can research stocks with more clarity before investing.',
+    stack: ['React', 'Market Data', 'Trading Strategies', 'Portfolio Tracking'],
+    link: 'https://github.com/Malaviya24/Ai-Stock',
+    projectLink: 'https://aistock07.vercel.app/',
     color: '#120F17',
     icon: Cube,
-    media: { type: 'video', url: '/videos/nanobonds.mp4' }
+    media: { type: 'image', url: '/photos/Ai-Stock.png' }
   },
   {
-    label: 'Web3 • IPFS',
-    title: 'w3deploy',
+    label: 'WhatsApp Automation',
+    title: 'BULKSENDER',
     description:
-      'A seamless 1-command IPFS deployment pipeline that automatically builds your project, pins it securely to Pinata, and returns a verifiable CID. The backend Hono API efficiently handles deployment webhooks and status tracking, while an Algorand smart contract registry powers instant, verifiable project lookups directly via the CLI tool or an integrated MCP agent.',
-    stack: ['Next.js', 'Hono API', 'IPFS/Pinata', 'Algorand'],
-    link: 'https://github.com/0xRakkesh/w3deploy',
+      'A smart WhatsApp bulk messaging platform for sending personalized messages to multiple contacts through a local dashboard. It supports WhatsApp QR login, TXT, CSV, and Excel contact imports, media attachments, spin-text variations, anti-ban delay controls, real-time delivery tracking, failed/sent history, exportable logs, and local session storage without subscriptions or cloud data sharing.',
+    stack: ['WhatsApp', 'CSV/Excel Import', 'Media Attachments', 'Local Dashboard'],
+    link: 'https://github.com/Malaviya24/Whatsapp-Bulk-Sender',
     color: '#120F17',
     icon: GlobeHemisphereWest,
-    media: { type: 'image', url: '/photos/web3deploy.png' }
+    media: { type: 'image', url: '/photos/Bulksender.png' }
   },
   {
-    label: 'Offline-first',
-    title: 'invo',
+    label: 'Private Chat',
+    title: 'ZERO-TRACE',
     description:
-      'A robust offline-first inventory management and Point-of-Sale (POS) system built on 4 heavily indexed local SQLite tables, featuring a resilient auto-reconnect sync queue for spotty network conditions. It leverages Google Gemini RAG with a 128-dimensional vector store to power deep AI-driven business insights, and automatically generates comprehensive weekly PDF reports across catalog performance, billing, and sales analytics.',
-    stack: ['React Native (Expo)', 'SQLite', 'TypeScript', 'Google Gemini'],
-    link: 'https://github.com/0xRakkesh/InVo',
+      'A secure anonymous chat platform that lets users create and join encrypted rooms without signing up. It supports client-side encrypted messages, anonymous identities, shareable links and QR codes, optional room passwords, self-deleting messages, typing indicators, admin controls, and real-time WebRTC voice calls for private communication without exposing personal data or plaintext messages.',
+    stack: ['Encryption', 'WebRTC', 'Anonymous Rooms', 'Real-time Chat'],
+    link: 'https://github.com/Malaviya24/Zero-Trace',
+    projectLink: 'https://zero-trace-psi.vercel.app/',
     color: '#120F17',
     icon: Database,
-    media: { type: 'video', url: '/videos/invo.mp4' }
+    media: { type: 'image', url: '/photos/Zero-Trace.png' }
   },
   {
-    label: 'Desktop',
-    title: 'neo',
+    label: 'Expense Tracking',
+    title: 'TRACURA',
     description:
-      'An always-on-top, highly optimized Electron desktop assistant featuring a 1-key global summon shortcut and a sophisticated dual AI engine that automatically switches between n8n workflows and Google Gemini based on context. It supports seamless voice I/O powered by Google Speech-to-Text and ElevenLabs, and ships with 5+ pre-configured, importable n8n workflow templates to jumpstart productivity.',
-    stack: ['Electron', 'Node.js', 'Google Gemini', 'n8n', 'ElevenLabs'],
-    link: 'https://github.com/0xRakkesh/Neo',
+      'A smart personal expense tracking platform that helps users organize spending into customizable spaces and monitor budgets with clarity. It includes secure authentication, expense creation, editing and deletion, budget progress indicators, analytics dashboards, category charts, notifications, dark and light themes, CSV and PDF exports, and responsive layouts for better money management.',
+    stack: ['Authentication', 'Analytics', 'Budgets', 'CSV/PDF Export'],
+    link: 'https://github.com/Malaviya24/Money-Tracker',
+    projectLink: 'https://tracura.vercel.app/',
     color: '#120F17',
     icon: Robot,
-    media: { type: 'image', url: '/photos/Neo.png' }
+    media: { type: 'image', url: '/photos/Tracura.png' }
   }
 ];
 
