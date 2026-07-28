@@ -412,6 +412,26 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (typeof document === 'undefined') {
+      return undefined;
+    }
+
+    const defaultTitle = document.title;
+    const awayTitle = 'Come back! 😭';
+
+    const handleVisibilityChange = () => {
+      document.title = document.hidden ? awayTitle : defaultTitle;
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      document.title = defaultTitle;
+    };
+  }, []);
+
+  useEffect(() => {
     const criticalAssets = ['/profile.png', '/icons/AbstractShape.png'];
     criticalAssets.forEach(src => {
       const img = new Image();
