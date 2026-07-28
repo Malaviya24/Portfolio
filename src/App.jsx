@@ -20,10 +20,7 @@ import { SmoothCursor } from './components/ui/smooth-cursor';
 import { Input } from './components/ui/input';
 import { Textarea } from './components/ui/textarea';
 import {
-  Cube,
   GlobeHemisphereWest,
-  Database,
-  Robot,
   GithubLogo,
   LinkedinLogo,
   Code,
@@ -37,6 +34,10 @@ import {
   BracketsCurly,
   Coffee,
   FileC,
+  ChartLineUp,
+  EyeSlash,
+  PaperPlaneTilt,
+  Wallet,
   ArrowUp,
   EnvelopeSimple
 } from "@phosphor-icons/react";
@@ -113,7 +114,7 @@ const projectItems = [
     link: 'https://github.com/Malaviya24/Ai-Stock',
     projectLink: 'https://aistock07.vercel.app/',
     color: '#120F17',
-    icon: Cube,
+    icon: ChartLineUp,
     media: { type: 'image', url: '/photos/Ai-Stock.png' }
   },
   {
@@ -124,7 +125,7 @@ const projectItems = [
     stack: ['WhatsApp', 'CSV/Excel Import', 'Media Attachments', 'Local Dashboard'],
     link: 'https://github.com/Malaviya24/Whatsapp-Bulk-Sender',
     color: '#120F17',
-    icon: GlobeHemisphereWest,
+    icon: PaperPlaneTilt,
     media: { type: 'image', url: '/photos/Bulksender.png' }
   },
   {
@@ -136,7 +137,7 @@ const projectItems = [
     link: 'https://github.com/Malaviya24/Zero-Trace',
     projectLink: 'https://zero-trace-psi.vercel.app/',
     color: '#120F17',
-    icon: Database,
+    icon: EyeSlash,
     media: { type: 'image', url: '/photos/Zero-Trace.png' }
   },
   {
@@ -148,7 +149,7 @@ const projectItems = [
     link: 'https://github.com/Malaviya24/Money-Tracker',
     projectLink: 'https://tracura.vercel.app/',
     color: '#120F17',
-    icon: Robot,
+    icon: Wallet,
     media: { type: 'image', url: '/photos/Tracura.png' }
   }
 ];
