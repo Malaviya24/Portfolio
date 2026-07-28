@@ -526,9 +526,18 @@ function App() {
           <div className="mx-auto grid min-h-[100svh] w-full max-w-[1600px] grid-cols-1 lg:grid-cols-2">
           <div
             ref={heroRef}
-            className="w-full min-h-[100svh] px-6 sm:px-8 md:px-10 flex flex-col justify-center items-center lg:items-start pointer-events-auto relative z-20"
+            className="w-full min-h-[100svh] px-6 sm:px-8 md:px-10 pt-24 pb-12 lg:py-0 flex flex-col justify-center items-center lg:items-start pointer-events-auto relative z-20"
           >
-            <h1 className="mt-20 sm:mt-24 md:mt-48 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.95] text-center lg:text-left max-w-5xl mx-auto lg:mx-0 text-black pb-2">
+            <div className="mb-8 flex w-full justify-center lg:hidden">
+              <div className="relative w-[min(58vw,260px)] aspect-square overflow-hidden rounded-[28px] border-[5px] border-white p-[6px] shadow-[0_0_0_1px_rgba(0,0,0,0.18),0_18px_44px_rgba(0,0,0,0.18)]">
+                <img
+                  src="/profile.png"
+                  alt="Dhruv profile"
+                  className="block w-full h-full rounded-[22px] object-cover object-center"
+                />
+              </div>
+            </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.95] text-center lg:text-left max-w-5xl mx-auto lg:mx-0 text-black pb-2">
               <SplitText
                 text="DHRUV MALAVIYA"
                 className=""
