@@ -529,7 +529,7 @@ function App() {
               className="mt-4 sm:mt-2 ml-0 sm:ml-2 md:ml-4 pr-0 sm:pr-8 md:pr-24 text-[clamp(1rem,2.2vw,1.6rem)] text-black/70 max-w-3xl mx-auto lg:mx-0 leading-snug tracking-tight text-center sm:text-left"
             >
               <p className="font-semibold">
-                Backend Developer focused on <span style={{ color: '#5227FF' }}>Node.js</span>, <span style={{ color: '#5227FF' }}>Express.js</span>, and <span style={{ color: '#5227FF' }}>MongoDB</span>, building secure REST APIs and scalable web applications with clean, maintainable code.
+                Full Stack Developer focused on <span style={{ color: '#5227FF' }}>React.js</span>, <span style={{ color: '#5227FF' }}>Node.js</span>, <span style={{ color: '#5227FF' }}>Express.js</span>, and <span style={{ color: '#5227FF' }}>MongoDB</span>, building fast, secure web applications with clean, scalable, maintainable code.
               </p>
 
               <div ref={ctaRef} className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4 w-full">
