@@ -68,6 +68,23 @@ const socialIconMap = {
 
 const newSkillsData = [
   {
+    category: "LANGUAGES",
+    items: [
+      { name: "JavaScript", icon: Code, color: "#F7DF1E" },
+      { name: "TypeScript", icon: CodeBlock, color: "#3178C6" },
+      { name: "Java", icon: Code, color: "#f89820" },
+      { name: "C", icon: CodeBlock, color: "#A8B9CC" }
+    ]
+  },
+  {
+    category: "FRONTEND",
+    items: [
+      { name: "React.js", icon: Cube, color: "#61DAFB" },
+      { name: "Tailwind CSS", icon: Cloud, color: "#38BDF8" },
+      { name: "GSAP", icon: Sparkle, color: "#88CE02" }
+    ]
+  },
+  {
     category: "BACKEND",
     items: [
       { name: "Node.js", icon: Hexagon, color: "#43853d" },
@@ -93,12 +110,10 @@ const newSkillsData = [
     ]
   },
   {
-    category: "OTHERS",
+    category: "TOOLS",
     items: [
       { name: "Git", icon: GitBranch, color: "#F05032" },
-      { name: "GitHub", icon: GithubLogo, color: "#ffffff" },
-      { name: "GSAP", icon: Sparkle, color: "#88CE02" },
-      { name: "Java", icon: Code, color: "#f89820" }
+      { name: "GitHub", icon: GithubLogo, color: "#ffffff" }
     ]
   }
 ];
