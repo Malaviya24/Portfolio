@@ -27,15 +27,16 @@ import {
   GithubLogo,
   LinkedinLogo,
   Code,
-  LockKey,
   GitBranch,
   Sparkle,
   Hexagon,
   CodeBlock,
   Cloud,
   Folder,
-  Key,
-  ShieldCheck,
+  Atom,
+  BracketsCurly,
+  Coffee,
+  FileC,
   ArrowUp,
   EnvelopeSimple
 } from "@phosphor-icons/react";
@@ -68,18 +69,9 @@ const socialIconMap = {
 
 const newSkillsData = [
   {
-    category: "LANGUAGES",
-    items: [
-      { name: "JavaScript", icon: Code, color: "#F7DF1E" },
-      { name: "TypeScript", icon: CodeBlock, color: "#3178C6" },
-      { name: "Java", icon: Code, color: "#f89820" },
-      { name: "C", icon: CodeBlock, color: "#A8B9CC" }
-    ]
-  },
-  {
     category: "FRONTEND",
     items: [
-      { name: "React.js", icon: Cube, color: "#61DAFB" },
+      { name: "React.js", icon: Atom, color: "#61DAFB" },
       { name: "Tailwind CSS", icon: Cloud, color: "#38BDF8" },
       { name: "GSAP", icon: Sparkle, color: "#88CE02" }
     ]
@@ -88,7 +80,7 @@ const newSkillsData = [
     category: "BACKEND",
     items: [
       { name: "Node.js", icon: Hexagon, color: "#43853d" },
-      { name: "Express.js", icon: CodeBlock, color: "#ffffff" },
+      { name: "Express.js", icon: BracketsCurly, color: "#ffffff" },
       { name: "REST", icon: Cloud, color: "#007ACC" },
       { name: "WebSocket", icon: GlobeHemisphereWest, color: "#22d3ee" }
     ]
@@ -101,19 +93,12 @@ const newSkillsData = [
     ]
   },
   {
-    category: "SECURITY",
-    items: [
-      { name: "JWT", icon: Key, color: "#d63aff" },
-      { name: "Bcrypt", icon: ShieldCheck, color: "#a855f7" },
-      { name: "OAuth", icon: LockKey, color: "#ffffff" },
-      { name: "Rate Limiting", icon: Cloud, color: "#38bdf8" }
-    ]
-  },
-  {
-    category: "TOOLS",
+    category: "OTHER",
     items: [
       { name: "Git", icon: GitBranch, color: "#F05032" },
-      { name: "GitHub", icon: GithubLogo, color: "#ffffff" }
+      { name: "GitHub", icon: GithubLogo, color: "#ffffff" },
+      { name: "Java", icon: Coffee, color: "#f89820" },
+      { name: "C", icon: FileC, color: "#A8B9CC" }
     ]
   }
 ];
