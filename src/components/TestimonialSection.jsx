@@ -63,6 +63,7 @@ export default function TestimonialSection() {
   const wrapperRef = useRef(null);
   const progressBarRef = useRef(null);
   const [realReviews, setRealReviews] = useState([]);
+  const [reviewVersion, setReviewVersion] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAssisting, setIsAssisting] = useState(false);
@@ -101,6 +102,7 @@ export default function TestimonialSection() {
         if (cancelled || !Array.isArray(data.reviews)) return;
 
         setRealReviews(data.reviews);
+        setReviewVersion((current) => current + 1);
       } catch {
         // Keep local fallback reviews if the API is unavailable.
       }
@@ -256,6 +258,7 @@ export default function TestimonialSection() {
 
       const nextReview = normalizeReview(data.review);
       setRealReviews((current) => [nextReview, ...current]);
+      setReviewVersion((current) => current + 1);
       closeModal();
     } catch (error) {
       setFormError(error.message || 'Failed to submit review.');
@@ -343,7 +346,7 @@ export default function TestimonialSection() {
       closeOnLeaveTrigger.kill();
       mm.revert();
     };
-  }, { dependencies: [closeModal, renderedReviews.length], scope: sectionRef, revertOnUpdate: true });
+  }, { dependencies: [closeModal, renderedReviews.length, reviewVersion], scope: sectionRef, revertOnUpdate: true });
 
   return (
     <section 
