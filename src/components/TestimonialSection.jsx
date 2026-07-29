@@ -63,7 +63,6 @@ export default function TestimonialSection() {
   const wrapperRef = useRef(null);
   const progressBarRef = useRef(null);
   const [realReviews, setRealReviews] = useState([]);
-  const [hasBackendReviews, setHasBackendReviews] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAssisting, setIsAssisting] = useState(false);
@@ -102,7 +101,6 @@ export default function TestimonialSection() {
         if (cancelled || !Array.isArray(data.reviews)) return;
 
         setRealReviews(data.reviews);
-        setHasBackendReviews(data.reviews.length > 0);
       } catch {
         // Keep local fallback reviews if the API is unavailable.
       }
@@ -116,9 +114,9 @@ export default function TestimonialSection() {
   }, []);
 
   const renderedReviews = useMemo(() => {
-    const combinedReviews = hasBackendReviews
-      ? realReviews.map(normalizeReview)
-      : placeholderReviews.slice(0, MIN_REVIEW_CARD_COUNT).map(normalizeReview);
+    const submittedReviews = realReviews.map(normalizeReview);
+    const defaultReviews = placeholderReviews.slice(0, MIN_REVIEW_CARD_COUNT).map(normalizeReview);
+    const combinedReviews = [...submittedReviews, ...defaultReviews];
 
     return combinedReviews.map((review, index) => {
       const avatarSeed = review.author || `review-${index}`;
@@ -130,7 +128,7 @@ export default function TestimonialSection() {
         avatarSvg,
       };
     });
-  }, [hasBackendReviews, realReviews]);
+  }, [realReviews]);
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
@@ -258,7 +256,6 @@ export default function TestimonialSection() {
 
       const nextReview = normalizeReview(data.review);
       setRealReviews((current) => [nextReview, ...current]);
-      setHasBackendReviews(true);
       closeModal();
     } catch (error) {
       setFormError(error.message || 'Failed to submit review.');
