@@ -3,12 +3,16 @@ const REVIEW_MAX_LENGTH = 200;
 const AI_TARGET_MIN_LENGTH = 170;
 const DEFAULT_GEMINI_MODEL = 'gemini-3.6-flash';
 const FALLBACK_GEMINI_MODELS = ['gemini-3.5-flash-lite', 'gemini-3.5-flash'];
+const DEPRECATED_GEMINI_MODELS = new Set([
+  'gemini-2.5-flash',
+  'models/gemini-2.5-flash',
+]);
 
 function getGeminiModels() {
   const configuredModels = String(process.env.GEMINI_MODEL || '')
     .split(',')
     .map((model) => model.trim())
-    .filter(Boolean);
+    .filter((model) => model && !DEPRECATED_GEMINI_MODELS.has(model));
 
   return Array.from(new Set([
     ...configuredModels,
