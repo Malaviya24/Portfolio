@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rakeshadak.vercel.app/sitemap.xml
+Sitemap: https://malaviya.site/sitemap.xml
