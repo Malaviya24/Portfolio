@@ -1,7 +1,21 @@
 const REVIEW_MIN_LENGTH = 60;
 const REVIEW_MAX_LENGTH = 200;
 const AI_TARGET_MIN_LENGTH = 170;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+const DEFAULT_GEMINI_MODEL = 'gemini-3.6-flash';
+const FALLBACK_GEMINI_MODELS = ['gemini-3.5-flash-lite', 'gemini-3.5-flash'];
+
+function getGeminiModels() {
+  const configuredModels = String(process.env.GEMINI_MODEL || '')
+    .split(',')
+    .map((model) => model.trim())
+    .filter(Boolean);
+
+  return Array.from(new Set([
+    ...configuredModels,
+    DEFAULT_GEMINI_MODEL,
+    ...FALLBACK_GEMINI_MODELS,
+  ]));
+}
 
 function cleanReview(value) {
   return String(value || '')
@@ -75,7 +89,7 @@ function fitReviewToRange(value, occupation) {
   return expandToTargetLength(trimmed, occupation);
 }
 
-async function generateReview(prompt) {
+async function requestGeminiReview(prompt, model) {
   const apiKey = process.env.GEMINI_API_KEY;
 
   if (!apiKey) {
@@ -83,7 +97,7 @@ async function generateReview(prompt) {
   }
 
   const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -109,6 +123,20 @@ async function generateReview(prompt) {
   }
 
   return getGeminiText(data);
+}
+
+async function generateReview(prompt) {
+  let lastError;
+
+  for (const model of getGeminiModels()) {
+    try {
+      return await requestGeminiReview(prompt, model);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error('Gemini request failed.');
 }
 
 export default async function handler(req, res) {
