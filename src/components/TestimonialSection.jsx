@@ -63,7 +63,6 @@ export default function TestimonialSection() {
   const wrapperRef = useRef(null);
   const progressBarRef = useRef(null);
   const [realReviews, setRealReviews] = useState([]);
-  const [reviewVersion, setReviewVersion] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAssisting, setIsAssisting] = useState(false);
@@ -102,7 +101,6 @@ export default function TestimonialSection() {
         if (cancelled || !Array.isArray(data.reviews)) return;
 
         setRealReviews(data.reviews);
-        setReviewVersion((current) => current + 1);
       } catch {
         // Keep local fallback reviews if the API is unavailable.
       }
@@ -258,7 +256,6 @@ export default function TestimonialSection() {
 
       const nextReview = normalizeReview(data.review);
       setRealReviews((current) => [nextReview, ...current]);
-      setReviewVersion((current) => current + 1);
       closeModal();
     } catch (error) {
       setFormError(error.message || 'Failed to submit review.');
@@ -280,7 +277,8 @@ export default function TestimonialSection() {
 
     const getScrollDistance = () => {
       const overflowDistance = Math.abs(getScrollAmount());
-      const dynamicPace = renderedReviews.length * DESKTOP_SCROLL_PACE_PER_CARD;
+      const cardCount = wrapper.querySelectorAll('[data-review-card]').length || MIN_REVIEW_CARD_COUNT;
+      const dynamicPace = cardCount * DESKTOP_SCROLL_PACE_PER_CARD;
 
       return Math.max(overflowDistance, dynamicPace);
     };
@@ -290,7 +288,7 @@ export default function TestimonialSection() {
     mm.add("(min-width: 768px)", () => {
       // Desktop: Horizontal pin and scrub
       const tween = gsap.to(wrapper, {
-        x: getScrollAmount,
+        x: () => getScrollAmount(),
         ease: "none",
       });
 
@@ -300,7 +298,8 @@ export default function TestimonialSection() {
         end: () => `+=${getScrollDistance()}`,
         pin: true,
         animation: tween,
-        scrub: 1,
+        scrub: 0.8,
+        anticipatePin: 1,
         invalidateOnRefresh: true,
       });
 
@@ -311,7 +310,8 @@ export default function TestimonialSection() {
           trigger: sectionRef.current,
           start: "top top",
           end: () => `+=${getScrollDistance()}`,
-          scrub: 1,
+          scrub: 0.8,
+          invalidateOnRefresh: true,
         }
       });
     });
@@ -346,7 +346,17 @@ export default function TestimonialSection() {
       closeOnLeaveTrigger.kill();
       mm.revert();
     };
-  }, { dependencies: [closeModal, renderedReviews.length, reviewVersion], scope: sectionRef, revertOnUpdate: true });
+  }, { dependencies: [closeModal], scope: sectionRef, revertOnUpdate: true });
+
+  useEffect(() => {
+    const refreshId = window.requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+
+    return () => {
+      window.cancelAnimationFrame(refreshId);
+    };
+  }, [renderedReviews.length]);
 
   return (
     <section 
@@ -362,6 +372,7 @@ export default function TestimonialSection() {
           {renderedReviews.map((testimonial, i) => (
             <div 
               key={i} 
+              data-review-card
               className="min-w-[320px] md:min-w-[400px] w-[320px] md:w-[400px] h-[430px] md:h-[420px] flex-shrink-0 flex flex-col justify-between bg-gray-50 border border-gray-200 rounded-3xl p-8 snap-center hover:shadow-lg transition-shadow duration-300"
             >
               <div>
