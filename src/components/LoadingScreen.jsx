@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 
 const LoadingScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const isLoadedRef = useRef(false);
   const counterRef = useRef(null);
 
   useEffect(() => {
@@ -22,11 +22,11 @@ const LoadingScreen = ({ onComplete }) => {
 
     // Use a GSAP object to animate the percentage smoothly
     const progressObj = { value: 0 };
-    
+
     const updateProgress = () => {
       loadedCount++;
       const target = (loadedCount / totalAssets) * 100;
-      
+
       gsap.to(progressObj, {
         value: target,
         duration: 0.5,
@@ -41,8 +41,8 @@ const LoadingScreen = ({ onComplete }) => {
     };
 
     const handleComplete = () => {
-      if (!isLoaded) {
-        setIsLoaded(true);
+      if (!isLoadedRef.current) {
+        isLoadedRef.current = true;
         // Small delay to let user see 100%
         setTimeout(() => {
           onComplete();
@@ -80,7 +80,7 @@ const LoadingScreen = ({ onComplete }) => {
     }, 10000);
 
     return () => clearTimeout(fallbackTimer);
-  }, [onComplete, isLoaded]);
+  }, [onComplete]);
 
   return (
     <motion.div
