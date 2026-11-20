@@ -575,8 +575,8 @@ function App() {
                     fillOpacity={0.45}
                   >
                     <a
-                      href="/resume.pdf"
-                      download="resume.pdf"
+                      href="/Dhruv_Malaviya_Resume.pdf"
+                      download="Dhruv_Malaviya_Resume.pdf"
                       className="pointer-events-auto"
                       onClick={handleResumeClick}
                     >
