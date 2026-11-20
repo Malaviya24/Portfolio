@@ -81,9 +81,9 @@ const newSkillsData = [
     category: "BACKEND",
     items: [
       { name: "Node.js", icon: Hexagon, color: "#43853d" },
-      { name: "Express.js", icon: BracketsCurly, color: "#ffffff" },
+      // { name: "Express.js", icon: BracketsCurly, color: "#ffffff" },
       { name: "REST", icon: Cloud, color: "#007ACC" },
-      { name: "WebSocket", icon: GlobeHemisphereWest, color: "#22d3ee" }
+      // { name: "WebSocket", icon: GlobeHemisphereWest, color: "#22d3ee" }
     ]
   },
   {
